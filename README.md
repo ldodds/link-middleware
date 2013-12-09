@@ -59,6 +59,18 @@ Or, initialize the middleware with an existing object:
 
 	use LinkMiddleware::Filter, :store => LinkMiddleware::MemoryStore.new
 	
+Link Store implementations should have the following methods:
+
+	add(context_uri, header)
+	remove(context_uri, header)
+	read(context_uri)
+	
+The header parameter passed to `add` and `remove` will be an instance of `LinkHeader` from the 
+[link-header gem](https://github.com/asplake/link_header). This will have an array of links. Similarly 
+the response from `read` should be a `LinkHeader` instance.
+
+			
+	
 ## Licence
 
 Placed into the public domain under the unlicence. See `LICENCE.md`	
