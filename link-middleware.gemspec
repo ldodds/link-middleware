@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 require "link-middleware/version"
 
 Gem::Specification.new do |s|
-  s.name        = "datapackage"
+  s.name        = "link-middleware"
   s.version     = LinkMiddleware::VERSION
   s.authors     = ["Leigh Dodds"]
   s.email       = ["leigh@ldodds.com"]

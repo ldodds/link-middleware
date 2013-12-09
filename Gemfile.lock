@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    datapackage (0.0.1)
+    link-middleware (0.0.1)
       link_header
       rack
 
@@ -33,6 +33,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  datapackage!
+  link-middleware!
   rspec
   simplecov-rcov
