@@ -4,6 +4,7 @@ PATH
     link-middleware (0.0.1)
       link_header
       rack
+      redis
 
 GEM
   remote: http://rubygems.org/
@@ -11,8 +12,10 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.1)
     link_header (0.0.8)
+    mock_redis (0.10.0)
     multi_json (1.8.2)
     rack (1.5.2)
+    redis (3.0.6)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -34,5 +37,6 @@ PLATFORMS
 
 DEPENDENCIES
   link-middleware!
+  mock_redis
   rspec
   simplecov-rcov

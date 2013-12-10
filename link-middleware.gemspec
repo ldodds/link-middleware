@@ -14,7 +14,10 @@ Gem::Specification.new do |s|
  
   s.add_dependency "rack"  
   s.add_dependency "link_header"
+  s.add_dependency "redis"
     
   s.add_development_dependency "rspec"
   s.add_development_dependency "simplecov-rcov"
+  s.add_development_dependency "mock_redis"
+  
 end
