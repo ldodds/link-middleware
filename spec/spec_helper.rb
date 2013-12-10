@@ -2,6 +2,8 @@ require 'simplecov'
 require 'simplecov-rcov'
 require 'rack/test'
 require 'link-middleware'
+require 'link_store_shared_examples.rb'
+
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 

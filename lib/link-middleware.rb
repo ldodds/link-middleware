@@ -4,6 +4,7 @@ require 'link_header'
 require 'link-middleware/annotator'
 require 'link-middleware/filter'
 require 'link-middleware/store'
+require 'link-middleware/redis_store'
 
 class LinkHeader::Link
   
