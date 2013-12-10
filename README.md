@@ -46,19 +46,49 @@ HTTP connections the store instance is cached as a Sinatra setting
 
 ## Link Store Implementations
 
-* In-Memory
-* Redis (TODO)
-* RDF Triplestore (TODO)	
+The gem is bundled with several different ways to store links for resources:
 
-To configure a Link Store. The following will instantiate a new instance, passing any 
-additional options to the constructor of the store class:
+* In-Memory -- suitable for testing only, all data held in memory in a Hash
+* [Redis](http://redis.io) -- stores all links in Redis Sets (see below)
+* RDF Triplestore (TODO) -- stores links in a SPARQL 1.1 compliant triple store
+
+### Configuring the Implementation
+
+Middleware components will default to using an in-memory store. To configure your preferred 
+implementation you need to provide some options to the middleware. One approach is to 
+ask the middleware component to create a class for you:
 
 	use LinkMiddleware::Filter, :store_impl => LinkMiddleware::MemoryStore
 
-Or, initialize the middleware with an existing object:
+Any additional options provided to the `use` keyword will be passed as a Hash to the store 
+constructor. This is really only useful if you're using a single component, but not if 
+you're using both as they will end up using separate instances. 
+
+In this case you should provide a pre-initialized store as follows:
 
 	use LinkMiddleware::Filter, :store => LinkMiddleware::MemoryStore.new
-	
+
+You can then configure the instance however you like.
+
+### The Redis Link Store
+
+E.g:
+
+	use LinkMiddleware::Filter, :store => LinkMiddleware::RedisStore.new
+
+The `RedisStore` constructor will automatically construct a client that will 
+connect to a local Redis instance on the default port. To configure details such as 
+host name, port, password, etc provide a Hash to the constructor of the store. 
+
+E.g:
+
+	store = LinkMiddleware::RedisStore.new :host => "...", :port => ..., :password => "..."
+
+Read the [redis.rb](https://github.com/redis/redis-rb) documentation for configuration 
+options
+
+### Implementing a new Link Store
+
 Link Store implementations should have the following methods:
 
 	add(context_uri, header)
@@ -69,8 +99,8 @@ The header parameter passed to `add` and `remove` will be an instance of `LinkHe
 [link-header gem](https://github.com/asplake/link_header). This will have an array of links. Similarly 
 the response from `read` should be a `LinkHeader` instance.
 
-			
-	
+The constructor should also accept a Hash of options for configuration.
+
 ## Licence
 
 Placed into the public domain under the unlicence. See `LICENCE.md`	
