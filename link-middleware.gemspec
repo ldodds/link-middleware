@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "simplecov-rcov"
   s.add_development_dependency "mock_redis"
-  
+  s.add_development_dependency "webmock"
 end

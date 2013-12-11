@@ -1,10 +1,13 @@
 require 'rack'
+require 'redis'
+require 'json'
 require 'link_header'
 
 require 'link-middleware/annotator'
 require 'link-middleware/filter'
 require 'link-middleware/store'
 require 'link-middleware/redis_store'
+require 'link-middleware/simple_rdf_store'
 
 class LinkHeader::Link
   
