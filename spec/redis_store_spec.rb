@@ -5,7 +5,7 @@ describe LinkMiddleware::RedisStore do
   
   before(:each) do
     @redis = MockRedis.new
-    @store = LinkMiddleware::RedisStore.new( :store => @redis )
+    @store = LinkMiddleware::RedisStore.new( :client => @redis )
   end
   
   it_should_behave_like "a valid Link Store"    

@@ -1,8 +1,8 @@
 module LinkMiddleware
   class RedisStore
     def initialize(options={})
-      if options[:store]
-        @redis = options[:store]
+      if options[:client]
+        @redis = options[:client]
       else  
         @redis = Redis.new(options)        
       end
